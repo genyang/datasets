@@ -1,0 +1,243 @@
+% 1. Title: Servo Data
+% 
+% 2. Sources
+%    (a) Created by: Karl Ulrich (MIT) in 1986
+%    (b) Donor: Ross Quinlan
+%    (c) Date: May 1993
+% 
+% 3. Past Usage:
+% 
+%    1.  Quinlan, J.R., "Learning with continuous classes", Proc. 5th Australian
+%        Joint Conference on AI (eds A. Adams and L. Sterling), Singapore: World
+%        Scientific, 1992
+%  
+%    2.  Quinlan, J.R., "Combining instance-based and model-based learning",
+%        Proc. ML'93 (ed P.E. Utgoff), San Mateo: Morgan Kaufmann 1993
+%  
+%        Results on 10-way cross-validation:
+%  
+%        Method                   Average         Relative
+%        ------                    |Err|           Error
+%                                 -------         --------
+%  
+%        Guessing mean              1.15            1.00
+%        Instance-based              .52             .26
+%        Regression                  .86             .49
+%        Model trees                 .45             .29
+%        Neural nets (G. Hinton)     .30             .11
+%        Regression+instances        .48             .20
+%        Model trees+instances       .30             .17
+%        NN+instances                .29             .11
+%  
+% 4. Relevant Information:
+% 
+%    Ross Quinlan:
+% 
+%    This data was given to me by Karl Ulrich at MIT in 1986.  I didn't 
+%    record his description at the time, but here's his subsequent (1992) 
+%    recollection:
+%  
+%      "I seem to remember that the data was from a simulation of a servo
+%      system involving a servo amplifier, a motor, a lead screw/nut, and a
+%      sliding carriage of some sort.  It may have been on of the
+%      translational axes of a robot on the 9th floor of the AI lab.  In any
+%      case, the output value is almost certainly a rise time, or the time
+%      required for the system to respond to a step change in a position set
+%      point."
+%  
+%    (Quinlan, ML'93)
+% 
+%    "This is an interesting collection of data provided by Karl 
+%     Ulrich.  It covers an extremely non-linear phenomenon - predicting the 
+%     rise time of a servomechanism in terms of two (continuous) gain settings
+%     and two (discrete) choices of mechanical linkages."
+% 
+% 5. Number of Instances: 167
+% 
+% 6. Number of Attributes: 4 + numeric class attribute
+% 
+% 7. Attribute information:
+% 
+%    1. motor: A,B,C,D,E
+%    2. screw: A,B,C,D,E
+%    3. pgain: 3,4,5,6
+%    4. vgain: 1,2,3,4,5
+%    5. class: 0.13 to 7.10
+% 
+% 8. Missing Attribute Values: None
+% 
+@relation 'servo'
+@attribute motor {E,B,D,C,A}
+@attribute screw {E,D,A,B,C}
+@attribute pgain {5,6,4,3}
+@attribute vgain {4,5,3,2,1}
+@attribute class {<=0.46875,(0.46875;0.54375],(0.54375;0.88125],(0.88125;1.49999],>1.49999}
+
+@data
+E,C,4,2,<=0.46875
+C,D,4,1,<=0.46875
+C,E,4,2,<=0.46875
+B,E,4,1,<=0.46875
+C,D,4,2,<=0.46875
+A,E,4,1,<=0.46875
+A,D,4,1,<=0.46875
+C,C,4,1,<=0.46875
+B,D,4,1,<=0.46875
+D,A,4,2,<=0.46875
+B,C,4,1,<=0.46875
+E,E,5,4,<=0.46875
+E,E,6,5,<=0.46875
+E,C,4,1,<=0.46875
+E,D,5,4,<=0.46875
+E,D,6,5,<=0.46875
+C,C,4,2,<=0.46875
+D,B,4,2,<=0.46875
+B,E,4,2,<=0.46875
+D,B,6,5,<=0.46875
+D,D,4,3,<=0.46875
+A,C,4,1,<=0.46875
+E,C,5,4,<=0.46875
+D,B,5,4,<=0.46875
+B,D,4,2,<=0.46875
+E,C,6,5,<=0.46875
+E,D,4,2,<=0.46875
+E,B,6,5,<=0.46875
+D,A,5,4,<=0.46875
+E,B,5,4,<=0.46875
+D,A,6,5,<=0.46875
+C,B,4,1,<=0.46875
+C,E,5,4,<=0.46875
+B,C,5,4,<=0.46875
+A,D,4,2,<=0.46875
+B,E,5,4,<=0.46875
+C,E,6,5,<=0.46875
+B,C,6,5,<=0.46875
+C,D,6,5,<=0.46875
+A,E,4,2,<=0.46875
+B,E,6,5,<=0.46875
+D,E,3,1,(0.46875;0.54375]
+A,C,5,4,(0.46875;0.54375]
+C,C,5,4,(0.46875;0.54375]
+B,D,5,4,(0.46875;0.54375]
+B,C,4,2,(0.46875;0.54375]
+E,E,4,2,(0.46875;0.54375]
+C,D,5,4,(0.46875;0.54375]
+A,D,5,4,(0.46875;0.54375]
+A,E,6,5,(0.46875;0.54375]
+B,D,6,5,(0.46875;0.54375]
+A,E,5,4,(0.46875;0.54375]
+A,D,6,5,(0.46875;0.54375]
+C,C,6,5,(0.46875;0.54375]
+C,B,4,2,(0.46875;0.54375]
+A,C,6,5,(0.46875;0.54375]
+C,A,5,2,(0.46875;0.54375]
+C,A,6,1,(0.46875;0.54375]
+C,E,4,1,(0.46875;0.54375]
+C,B,5,4,(0.46875;0.54375]
+B,B,6,5,(0.46875;0.54375]
+B,B,5,4,(0.46875;0.54375]
+C,A,5,1,(0.46875;0.54375]
+C,B,6,5,(0.46875;0.54375]
+C,A,6,3,(0.46875;0.54375]
+D,C,4,3,(0.46875;0.54375]
+C,A,6,2,(0.46875;0.54375]
+E,A,6,5,(0.54375;0.88125]
+E,A,5,4,(0.54375;0.88125]
+D,B,4,3,(0.54375;0.88125]
+A,C,4,2,(0.54375;0.88125]
+A,B,6,5,(0.54375;0.88125]
+B,B,4,1,(0.54375;0.88125]
+A,B,5,4,(0.54375;0.88125]
+E,B,4,2,(0.54375;0.88125]
+A,B,4,1,(0.54375;0.88125]
+B,A,5,3,(0.54375;0.88125]
+D,B,4,1,(0.54375;0.88125]
+A,A,5,3,(0.54375;0.88125]
+E,E,3,1,(0.54375;0.88125]
+D,D,3,1,(0.54375;0.88125]
+D,A,4,3,(0.54375;0.88125]
+C,A,4,1,(0.54375;0.88125]
+B,B,4,2,(0.54375;0.88125]
+C,A,4,2,(0.54375;0.88125]
+C,A,5,4,(0.54375;0.88125]
+C,A,6,5,(0.54375;0.88125]
+A,A,6,5,(0.54375;0.88125]
+A,A,5,4,(0.54375;0.88125]
+E,C,4,3,(0.54375;0.88125]
+B,A,5,4,(0.54375;0.88125]
+A,B,4,2,(0.54375;0.88125]
+B,A,4,1,(0.54375;0.88125]
+B,A,6,5,(0.54375;0.88125]
+A,A,4,1,(0.54375;0.88125]
+E,E,4,3,(0.54375;0.88125]
+B,A,4,2,(0.54375;0.88125]
+C,B,4,3,(0.54375;0.88125]
+E,A,4,1,(0.54375;0.88125]
+A,A,4,2,(0.54375;0.88125]
+E,D,3,1,(0.88125;1.49999]
+D,C,3,1,(0.88125;1.49999]
+D,E,3,2,(0.88125;1.49999]
+C,C,4,3,(0.88125;1.49999]
+E,D,4,3,(0.88125;1.49999]
+B,C,4,3,(0.88125;1.49999]
+C,D,4,3,(0.88125;1.49999]
+E,B,4,3,(0.88125;1.49999]
+B,B,4,3,(0.88125;1.49999]
+A,C,4,3,(0.88125;1.49999]
+E,A,4,2,(0.88125;1.49999]
+C,A,4,3,(0.88125;1.49999]
+A,B,4,3,(0.88125;1.49999]
+D,A,4,1,(0.88125;1.49999]
+B,D,4,3,(0.88125;1.49999]
+C,E,4,3,(0.88125;1.49999]
+B,A,4,3,(0.88125;1.49999]
+E,C,3,1,(0.88125;1.49999]
+E,E,3,2,(0.88125;1.49999]
+B,E,4,3,(0.88125;1.49999]
+A,A,4,3,(0.88125;1.49999]
+A,D,4,3,(0.88125;1.49999]
+A,E,4,3,(0.88125;1.49999]
+E,B,4,1,(0.88125;1.49999]
+E,A,4,3,(0.88125;1.49999]
+D,C,3,2,(0.88125;1.49999]
+C,E,3,1,(0.88125;1.49999]
+E,D,3,2,(0.88125;1.49999]
+D,B,3,1,(0.88125;1.49999]
+E,B,3,1,(0.88125;1.49999]
+C,D,3,1,(0.88125;1.49999]
+D,D,3,2,(0.88125;1.49999]
+E,C,3,2,(0.88125;1.49999]
+D,B,3,2,>1.49999
+E,B,3,2,>1.49999
+C,D,3,2,>1.49999
+C,C,3,1,>1.49999
+D,A,3,1,>1.49999
+D,A,3,2,>1.49999
+B,E,3,1,>1.49999
+B,C,3,1,>1.49999
+C,B,3,1,>1.49999
+A,E,3,1,>1.49999
+B,D,3,1,>1.49999
+A,C,3,1,>1.49999
+B,D,3,2,>1.49999
+A,D,3,1,>1.49999
+C,E,3,2,>1.49999
+B,B,3,2,>1.49999
+C,C,3,2,>1.49999
+C,A,3,1,>1.49999
+C,B,3,2,>1.49999
+A,B,3,2,>1.49999
+B,C,3,2,>1.49999
+A,E,3,2,>1.49999
+B,B,3,1,>1.49999
+A,C,3,2,>1.49999
+A,B,3,1,>1.49999
+B,E,3,2,>1.49999
+A,D,3,2,>1.49999
+C,A,3,2,>1.49999
+B,A,3,1,>1.49999
+A,A,3,1,>1.49999
+B,A,3,2,>1.49999
+A,A,3,2,>1.49999
+E,A,3,2,>1.49999
+E,A,3,1,>1.49999
